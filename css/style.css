@@ -1,0 +1,473 @@
+/* CSS Variables for Consistency */
+:root {
+    --primary-color: #006494;
+    --secondary-color: #13292D;
+    --background-color: #EBF1F2;
+    --dark-background-color: #242424; /* Updated dark background */
+    --light-background-color: #f7f9fa;
+    --even-row-color: #f0f8ff;
+    --font-color: #13292D;
+    --highlight-color: #04AA6D;
+    --light-font-color: #EBF1F2;
+    --dark-even-row-color: #2e2e2e; /* Dark even row color */
+    --dark-odd-row-color: #3a3a3a;  /* Dark odd row color */
+    --dark-header-bg-color: #373737;  /* Dark mode header background */
+    --dark-header-font-color: #EBF1F2; /* Light font color for headers in dark mode */
+}
+
+/* Base styles for mobile (Mobile-first design) */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--font-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    animation: fadeIn 1s ease-in-out; /* Animation for fade-in effect */
+}
+
+/* Dark mode adjustments */
+body.dark-mode {
+    background-color: var(--dark-background-color);
+    color: var(--light-font-color);
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: var(--dark-background-color);
+        color: var(--light-font-color);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: var(--background-color);
+        color: var(--font-color);
+    }
+}
+
+/* Header */
+header {
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 1.5rem;
+}
+
+h2 {
+    text-align: center;
+}
+
+/* Sticky Navbar */
+.sticky-navbar {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    margin: 0;
+    background-color: var(--primary-color);
+}
+
+.sticky-navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.sticky-navbar li {
+    float: left;
+}
+
+.sticky-navbar a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.sticky-navbar a:hover {
+    background-color: darken(var(--primary-color), 10%); /* Darker shade on hover */
+}
+
+.sticky-navbar a:focus {
+    background-color: lighten(var(--primary-color), 10%);
+}
+
+.sticky-navbar li:last-child {
+    border-right: none;
+}
+
+/* Styling for player list with alternating background */
+.player-list ul {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+}
+
+.player-list li {
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.3s ease; /* Animation for list items */
+}
+
+.player-list li:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.player-list li:nth-child(odd) {
+    background-color: white; /* Light background for odd items */
+}
+
+.player-list li:nth-child(even) {
+    background-color: var(--even-row-color); /* Slightly darker background for even items */
+}
+
+.player-list a {
+    color: var(--font-color);
+    text-decoration: none;
+    font-size: clamp(1rem, 3vw, 1.25rem); /* Responsive font size */
+}
+
+.player-list a:hover {
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+/* Footer */
+footer {
+    margin-top: 1rem;
+    width: 100%;
+    text-align: center;
+}
+
+/* Animation for fade-in effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Slide-in effect for team list */
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Team list container */
+.team-list {
+    width: 90%; /* Almost full-page width */
+    margin: 1rem auto; /* Center the container */
+    border-radius: 12px; /* Rounded borders */
+    overflow: hidden; /* Prevents rounded corners from being cut off */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    animation: slideIn 0.5s ease-out; /* Animation for slide-in effect */
+}
+
+/* List styling */
+.team-list ul {
+    list-style: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+}
+
+.team-list li {
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+/* Alternating row colors */
+.team-list li:nth-child(odd) {
+    background-color: var(--light-background-color); /* Light background */
+}
+
+.team-list li:nth-child(even) {
+    background-color: #e1e8eb; /* Slightly darker background */
+}
+
+/* Link styling */
+.team-list li a {
+    text-decoration: none;
+    color: var(--primary-color); /* Link color */
+    display: block;
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.team-list li a:hover {
+    color: var(--highlight-color); /* Hover color */
+}
+
+/* Rounded corners for each list item */
+.team-list li {
+    border-bottom: 1px solid #d3d3d3;
+}
+
+.team-list li:last-child {
+    border-bottom: none; /* Remove border from last item */
+}
+
+/* Styles for Athlete's Seasonal Records Table */
+#athlete-sr-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: white; /* White background */
+}
+
+#athlete-sr-table th,
+#athlete-sr-table td {
+    border: 1px solid var(--primary-color); /* Dark blue border */
+    padding: 10px;
+    text-align: left;
+}
+
+#athlete-sr-table th {
+    background-color: var(--secondary-color); /* Dark teal header */
+    color: white; /* White text color */
+}
+
+#athlete-sr-table tr:nth-child(even) {
+    background-color: #E8F1F2; /* Light grey background for even rows */
+}
+
+#athlete-sr-table tr:nth-child(odd) {
+    background-color: white; /* White for odd rows */
+}
+
+/* Button styling */
+button {
+    background-color: var(--primary-color);
+    border-style: groove;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    margin: auto;
+    cursor: pointer;
+    margin-bottom: 2%;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    align-items: center;
+}
+
+button:hover {
+    background-color: var(--highlight-color); /* Highlight color on hover */
+}
+
+button:focus {
+    outline: none; /* Remove the default focus outline */
+    box-shadow: 0 0 3px 2px rgba(0, 123, 255, 0.5); /* Add a custom focus effect */
+}
+
+/* Styles for Race Results Table */
+#athlete-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white; /* White background */
+}
+
+#athlete-table th,
+#athlete-table td {
+    border: 1px solid var(--primary-color); /* Dark blue border */
+    padding: 10px;
+    text-align: left;
+}
+
+#athlete-table th {
+    background-color: var(--primary-color); /* Light blue header */
+    color: white; /* White text color */
+}
+
+#athlete-table tr:nth-child(even) {
+    background-color: #E8F1F2; /* Light grey background for even rows */
+}
+
+#athlete-table tr:nth-child(odd) {
+    background-color: white; /* White for odd rows */
+}
+
+.result-row:hover {
+    background-color: #247BA0; /* Medium blue on hover */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Image styling */
+img {
+    width: 200px; /* Set a specific width */
+    height: 200px; /* Set a specific height */
+    border-radius: 50%; /* Makes the image round */
+    object-fit: cover; /* Ensures the image covers the entire area without distortion */
+}
+
+/* Focus styles for accessibility */
+a:focus,
+button:focus {
+    outline: 3px solid var(--highlight-color);
+    outline-offset: 2px;
+}
+
+/* Media queries for responsiveness */
+@media (min-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    button {
+        display: inline-table; /* Make the buttons appear beside each other */
+    }
+}
+
+@media (min-width: 1024px) {
+    body {
+        padding: 2rem;
+    }
+
+    .player-list li {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+    button {
+        display: inline-block; /* Make the buttons appear beside each other */
+    }
+}
+
+/* Print styles */
+@media print {
+    .sticky-navbar, footer {
+        display: none;
+    }
+
+    body {
+        font-size: 12pt;
+        color: black;
+        background: white;
+    }
+
+    a {
+        color: black;
+        text-decoration: underline;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    /* Dark mode for Athlete's Seasonal Records Table */
+    table {
+        background-color: var(--dark-background-color); /* Dark background */
+    }
+
+    th {
+        background-color: var(--dark-header-bg-color); /* Dark mode header background */
+        color: var(--dark-header-font-color); /* Light font color for headers */
+    }
+
+    td {
+        color: var(--light-font-color); /* Light font color for table data */
+    }
+
+    #athlete-sr-table tr:nth-child(even) {
+        background-color: var(--dark-even-row-color); /* Dark even row color */
+        color: var(--dark-odd-row-color);
+    }
+
+    #athlete-sr-table tr:nth-child(odd) {
+        background-color: var(--dark-odd-row-color);  /* Dark odd row color */
+    }
+
+    #athlete-result-table tr:nth-child(even) {
+        background-color: var(--dark-even-row-color); /* Dark even row color */
+        color: var(--dark-even-row-color);
+    }
+
+    #athlete-result-table tr:nth-child(odd) {
+        background-color: var(--dark-odd-row-color);  /* Dark odd row color */
+    }
+
+    tbody a {
+        color: white;
+    }
+
+    footer a {
+        color: white;
+    }
+
+    body a {
+        color: white;
+    }
+}
+
+/* Input Filter Styles */
+/* Input Filter Styles */
+#table-filter {
+    width: 100%; /* Makes the input take up the full width of its container */
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    outline: none;
+    background-color: var(--light-background-color);
+    color: var(--font-color);
+    transition: all 0.3s ease;
+}
+
+/* Placeholder styling */
+#table-filter::placeholder {
+    color: var(--font-color);
+    opacity: 0.7; /* Slightly faded placeholder text */
+}
+
+/* Focus styles for input */
+#table-filter:focus {
+    border-color: var(--highlight-color);
+    box-shadow: 0 0 5px var(--highlight-color); /* Subtle glow effect */
+}
+
+/* Styling for when input is empty */
+#table-filter:empty {
+    border-color: #ccc; /* Light border when input is empty */
+}
+
+/* Add some margin for spacing */
+#table-filter {
+    margin-bottom: 1rem;
+}
+
+
+/* Addresses prefers-reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none;
+        transition: none;
+        scroll-behavior: auto;
+    }
+}
